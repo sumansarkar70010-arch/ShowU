@@ -1,0 +1,25 @@
+# Node modules (frontend)
+shown-frontend/node_modules/
+node_modules/
+
+# Python
+__pycache__/
+venv/
+env/
+*.pyc
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+*.log
+*.log.*
+logs/
+
+
+showu-frontend/firebase-debug.log
+firebase-debug.log

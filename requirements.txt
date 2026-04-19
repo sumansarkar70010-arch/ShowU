@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+<<<<<<< HEAD
+aiofiles==25.1.0
+=======
+aiofiles
+>>>>>>> 1231c61955106f6ff0a0ce90adc114d6050143ac
+python-multipart
+pydantic
+pydantic-settings
+sqlalchemy
+<<<<<<< HEAD
+psycopg2-binary
+=======
+psycopg2-binary
+>>>>>>> 1231c61955106f6ff0a0ce90adc114d6050143ac

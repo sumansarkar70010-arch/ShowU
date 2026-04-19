@@ -1,0 +1,45 @@
+/* src/styles/globals.css */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #121212; /* dark background */
+  color: #ffffff; /* light text */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: #1f1f1f;
+  border-top: 1px solid #333;
+}
+
+.story-bar {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+}
+
+.story img {
+  border-radius: 50%;
+  border: 2px solid #ff4081;
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+.dashboard {
+  padding: 20px;
+}
+
+.analytics-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.analytics-table th, .analytics-table td {
+  border: 1px solid #333;
+  padding: 8px;
+  text-align: center;
+}
