@@ -2,7 +2,23 @@ from fastapi import FastAPI
 from showu.app.db.session import engine
 from showu.app.db.base import Base  
 
+print("DEBUG: Creating FastAPI app...", flush=True)
+
 app = FastAPI()
+
+import sys
+import traceback
+
+print("===== Starting application =====", flush=True)
+
+try:
+    
+    pass
+except Exception as e:
+    print("ERROR during startup:", file=sys.stderr)
+    traceback.print_exc()
+    sys.exit(1)
+
 
 
 Base.metadata.create_all(bind=engine)
@@ -34,3 +50,5 @@ def create_application() -> FastAPI:
 app = create_application()
 
 Base.metadata.create_all(bind=engine)
+
+print("DEBUG: Application ready to serve.", flush=True)
