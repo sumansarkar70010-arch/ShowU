@@ -3,7 +3,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 from datetime import datetime, timedelta
-from app.db.base import Base
+from showu.app.db.base import Base
 
 class Story(Base):
     __tablename__ = "stories"

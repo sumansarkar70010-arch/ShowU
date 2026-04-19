@@ -1,7 +1,7 @@
 # showu/app/services/story_service.py
 
 from sqlalchemy.orm import Session
-from app.db.repositories.story_repo import StoryRepository
+from showu.app.db.repositories.story_repo import StoryRepository
 
 class StoryService:
     def __init__(self, db: Session):

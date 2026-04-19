@@ -1,7 +1,7 @@
 # showu/app/services/post_service.py
 
 from sqlalchemy.orm import Session
-from app.db.repositories.post_repo import PostRepository
+from showu.app.db.repositories.post_repo import PostRepository
 
 class PostService:
     def __init__(self, db: Session):

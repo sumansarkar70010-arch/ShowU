@@ -4,16 +4,16 @@ from sqlalchemy.orm import Session
 
 class UserService:
     def __init__(self, db: Session):
-        from app.db.repositories.user_repo import UserRepository
+        from showu.app.db.repositories.user_repo import UserRepository
         self.repo = UserRepository(db)
 
     def get_user(self, user_id: int) -> "user | None": # type: ignore
-        from app.db.models.user import User
-        from app.db.models.user import user
+        from showu.app.db.models.user import User
+        from showu.app.db.models.user import user
         return self.repo.get_by_id(user_id)
 
     def update_user(self, user_id: int, username: str | None = None, email: str | None = None):
-        from app.db.models.user import User
+        from showu.app.db.models.user import User
         user = self.repo.get_by_id(user_id)
         if not user:
             return None

@@ -2,8 +2,8 @@
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from app.db.session import SessionLocal
-from app.services.story_service import StoryService
+from showu.app.db.session import SessionLocal
+from showu.app.services.story_service import StoryService
 
 router = APIRouter()
 

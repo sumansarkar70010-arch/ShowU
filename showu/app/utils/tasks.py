@@ -1,7 +1,7 @@
 # showu/app/utils/tasks.py
 
 from celery import Celery
-from app.core.config import settings
+from showu.app.core.config import settings
 
 celery_app = Celery(
     "showu_tasks",

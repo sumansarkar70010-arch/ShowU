@@ -1,7 +1,7 @@
 # showu/app/db/repositories/video_repo.py
 
 from sqlalchemy.orm import Session
-from app.db.models.video import Video
+from showu.app.db.models.video import Video
 
 class VideoRepository:
     def __init__(self, db: Session):

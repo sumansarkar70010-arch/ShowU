@@ -3,7 +3,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Text
 from sqlalchemy.orm import relationship
 from datetime import datetime
-from app.db.base import Base
+from showu.app.db.base import Base
 
 class Post(Base):
     __tablename__ = "posts"

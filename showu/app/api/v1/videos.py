@@ -3,8 +3,8 @@
 from fastapi import APIRouter, Depends, UploadFile, File, HTTPException
 import shutil
 from sqlalchemy.orm import Session
-from app.db.session import SessionLocal
-from app.services.video_service import VideoService
+from showu.app.db.session import SessionLocal
+from showu.app.services.video_service import VideoService
 
 router = APIRouter()
 

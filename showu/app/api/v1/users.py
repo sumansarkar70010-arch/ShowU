@@ -1,9 +1,9 @@
 # showu/app/api/v1/users.py
 
-from app.services.user_service import UserService 
+from showu.app.services.user_service import UserService 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from app.db.session import SessionLocal
+from showu.app.db.session import SessionLocal
 
 router = APIRouter()
 

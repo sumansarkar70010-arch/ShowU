@@ -1,7 +1,7 @@
 # showu/app/services/analytics_service.py
 
 from sqlalchemy.orm import Session
-from app.db.repositories.analytics_repo import AnalyticsRepository
+from showu.app.db.repositories.analytics_repo import AnalyticsRepository
 
 class AnalyticsService:
     def __init__(self, db: Session):

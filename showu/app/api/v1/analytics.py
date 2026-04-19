@@ -2,8 +2,8 @@
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from app.db.session import SessionLocal
-from app.services.analytics_service import AnalyticsService
+from showu.app.db.session import SessionLocal
+from showu.app.services.analytics_service import AnalyticsService
 
 router = APIRouter()
 

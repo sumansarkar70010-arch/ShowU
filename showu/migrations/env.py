@@ -2,8 +2,8 @@ import sys
 import os
 
 sys.path.insert(0, os.path.realpath(os.path.join(os.path.dirname(__file__), '..')))
-from app.core.config import Base
-from app.db.models.user import User
+from showu.app.core.config import Base
+from showu.app.db.models.user import User
 
 from logging.config import fileConfig
 
@@ -83,3 +83,4 @@ if context.is_offline_mode():
     run_migrations_offline()
 else:
     run_migrations_online()
+

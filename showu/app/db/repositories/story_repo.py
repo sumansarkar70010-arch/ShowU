@@ -2,7 +2,7 @@
 
 from sqlalchemy.orm import Session
 from datetime import datetime
-from app.db.models.story import Story
+from showu.app.db.models.story import Story
 
 class StoryRepository:
     def __init__(self, db: Session):

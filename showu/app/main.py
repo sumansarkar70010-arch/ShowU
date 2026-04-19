@@ -1,20 +1,20 @@
 from fastapi import FastAPI
-from app.db.session import engine
-from app.db.base import Base  
+from showu.app.db.session import engine
+from showu.app.db.base import Base  
 
 app = FastAPI()
 
 
 Base.metadata.create_all(bind=engine)
-from app.api.v1 import auth, users, posts, videos, stories, analytics
-from app.db.session import engine 
+from showu.app.api.v1 import auth, users, posts, videos, stories, analytics
+from showu.app.db.session import engine 
 
 
 try:
-    from app.db.base import Base
+    from showu.app.db.base import Base
 except ImportError:
     try:
-        from app.db.base import Base
+        from showu.app.db.base import Base
     except ImportError:
         
         from sqlalchemy.ext.declarative import declarative_base
