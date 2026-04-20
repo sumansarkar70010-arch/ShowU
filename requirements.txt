@@ -1,10 +1,10 @@
-
 fastapi
-uvicorn
-aiofiles
+uvicorn[standard]
+python-jose[cryptography]
+passlib[bcrypt]
 python-multipart
-pydantic
-pydantic-settings
 sqlalchemy
 psycopg2-binary
-python-jose[cryptography]
+pydantic-settings
+redis
+celery
