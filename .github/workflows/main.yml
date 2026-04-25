@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Install dependencies and Build
+      - name: Install and Build
         run: |
           if [ -d "ShowU" ]; then
             cd ShowU
