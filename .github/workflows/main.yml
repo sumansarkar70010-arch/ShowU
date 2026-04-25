@@ -21,7 +21,7 @@ jobs:
         run: |
           cd showu-frontend
           npm install
-          npm run build
+          CI=falsenpm run build
           
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@v2.2.0
