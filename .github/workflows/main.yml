@@ -10,7 +10,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ShowU
+        working-directory:
 
     steps:
       - name: Checkout code
