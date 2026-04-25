@@ -8,6 +8,10 @@ jobs:
   frontend-deploy:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ShowU
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
