@@ -1,5 +1,6 @@
 # showu/app/api/v1/users.py
 
+from showu.app.dependencies import get_current_user
 from showu.app.services.user_service import UserService 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -29,3 +30,7 @@ def update_user(user_id: int, username: str | None = None, email: str | None = N
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return {"id": user.id, "username": user.username, "email": user.email}
+
+@router.get("/profile")
+def get_profile(current_user: str = Depends(get_current_user)):
+    return {"email": current_user}

@@ -18,7 +18,7 @@ export function AuthProvider({ children }: any) {
 
   const login = async (email: string, password: string) => {
     try {
-      const res = await fetch("http://localhost:8000/api/v1/auth/login", {
+      const res = await fetch("https://showu.onrender.com/api/v1/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
