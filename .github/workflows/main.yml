@@ -8,10 +8,6 @@ jobs:
   frontend-deploy:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: .
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,11 +17,18 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build Next.js
-        run: npm run build && npm run export
+      - name: Install dependencies and Build
+        run: |
+          if [ -d "ShowU" ]; then
+            cd ShowU
+          fi
+          npm install
+          npm run build
+          if grep -q "next export" package.json; then
+            npm run export
+          else
+            npx next export
+          fi
 
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@v2.2.0
