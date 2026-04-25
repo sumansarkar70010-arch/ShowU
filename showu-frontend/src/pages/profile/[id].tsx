@@ -5,32 +5,25 @@ import { AuthContext } from "../../context/AuthContext";
 import { useRouter } from "next/router";
 
 export default function ProfilePage() {
-  // ১. Context কল করার সময় একটি ডিফেন্সিভ চেক (Default value) যোগ করা হয়েছে
-  const authContext = useContext(AuthContext);
-  const token = authContext ? authContext.token : null;
-  
+  const context = useContext(AuthContext);
   const router = useRouter();
   const { id } = router.query;
   const [profile, setProfile] = useState<any>(null);
 
-  useEffect(() => {
-    // ২. বিল্ড টাইমে যেন কোডটি রান না করে সেজন্য window চেক
-    if (typeof window === "undefined") return;
+  const token = context && (context as any).token ? (context as any).token : null;
 
-    if (!token) {
-      router.push("/login");
-      return;
-    }
-    
-    if (id) {
+  useEffect(() => {
+    if (typeof window !== "undefined" && id && token) {
       fetch(`http://localhost:8000/api/v1/users/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then(res => res.json())
         .then(setProfile)
-        .catch(err => console.error("Fetch error:", err));
+        .catch(err => console.error("Error fetching profile:", err));
+    } else if (typeof window !== "undefined" && !token) {
+       
     }
-  }, [id, token, router]);
+  }, [id, token]);
 
   if (!profile) return <p>Loading...</p>;
 
