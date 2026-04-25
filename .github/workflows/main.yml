@@ -17,29 +17,12 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Find and Install Dependencies
+      - name: Install and Build
         run: |
-          
-          TARGET_DIR="."
-          if [ -f "package.json" ]; then
-            TARGET_DIR="."
-          elif [ -f "ShowU/package.json" ]; then
-            TARGET_DIR="ShowU"
-          else
-            
-            TARGET_DIR=$(find . -name "package.json" -not -path "*/node_modules/*" | head -n 1 | xargs dirname)
-          fi
-          
-          echo "Found package.json in: $TARGET_DIR"
-          cd $TARGET_DIR
+          cd showu-frontend
           npm install
           npm run build
-          
-          if grep -q "next export" package.json; then
-            npm run export
-          else
-            npx next export
-          fi
+          npx next export
 
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@v2.2.0
