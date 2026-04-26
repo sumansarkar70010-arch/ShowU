@@ -7,6 +7,8 @@ on:
 jobs:
   frontend-deploy:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout code
@@ -15,7 +17,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24" 
 
       - name: Install dependencies
         working-directory: ./showu-frontend
@@ -25,11 +27,7 @@ jobs:
         working-directory: ./showu-frontend
         run: |
           export NEXT_TELEMETRY_DISABLED=1
-          npx next build
-        env:
-          NEXT_DISABLE_ESLINT: 1
-          NEXT_DISABLE_TYPECHECK: 1
-          CI: false
+          NEXT_DISABLE_ESLINT=1 NEXT_DISABLE_TYPECHECK=1 npx next build
 
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@v2.2.0
@@ -37,4 +35,4 @@ jobs:
           args: deploy --only hosting --project "8339b"
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          PROJECT_PATH: '.'
+          PROJECT_PATH: showu-frontend
