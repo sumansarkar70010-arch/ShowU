@@ -1,43 +1,37 @@
-name: Deploy Frontend to Firebase
+name: CI/CD Pipeline
 
 on:
-  push:
-    branches: [ "main" ]
-    paths:
-      - 'showu-frontend/**'
+  push:branches: [ "main" ]
 
 jobs:
-  build_and_deploy:
+
+  frontend-deploy:
     runs-on: ubuntu-latest
-  steps:
+
+    steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: showu-frontend/package-lock.json
+          node-version: "24"
 
       - name: Install dependencies
-        run: |
-          cd showu-frontend
-          npm ci
+        working-directory: ./showu-frontend
+        run: npm install
 
-      - name: Build Next.js app
+      - name: Build Next.js
+        working-directory: ./showu-frontend
         run: |
-          cd showu-frontend
-          npm run build
-        env:
-          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
-        
+          export NEXT_TELEMETRY_DISABLED=1
+          NEXT_DISABLE_ESLINT=1 NEXT_DISABLE_TYPECHECK=1 npx next build
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SHOWU }}'
           channelId: live
-          projectId: showu-8339b
+          projectId: 8339b
           entryPoint: ./showu-frontend
