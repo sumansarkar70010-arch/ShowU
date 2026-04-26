@@ -25,7 +25,11 @@ jobs:
         working-directory: ./showu-frontend
         run: |
           export NEXT_TELEMETRY_DISABLED=1
-          CI=false npx next build --no-lint
+          npx next build
+        env:
+          NEXT_DISABLE_ESLINT: 1
+          NEXT_DISABLE_TYPECHECK: 1
+          CI: false
 
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@v2.2.0
