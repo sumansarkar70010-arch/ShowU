@@ -37,4 +37,5 @@ jobs:
           args: deploy --only hosting --project "8339b"
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          PROJECT_PATH: showu-frontend
+          PROJECT_PATH:
+            showu-frontend
