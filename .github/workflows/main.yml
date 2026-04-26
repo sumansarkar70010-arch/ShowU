@@ -21,18 +21,12 @@ jobs:
         working-directory: ./showu-frontend
         run: npm install
 
-      - name: Build Next.js
+      - name: Build Next.js (Force Build)
         working-directory: ./showu-frontend
-    
+        
         run: |
-          export NEXT_DISABLE_ESLINT=1
-          export NEXT_DISABLE_TYPECHECK=1
-          CI=false npm run build
+          export NEXT_TELEMETRY_DISABLED=1
+          CI=false npx next build --no-lint
 
       - name: Deploy to Firebase Hosting
-        uses: w9jds/firebase-action@v2.2.0
-        with:
-          args: deploy --only hosting --project "8339b"
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          PROJECT_PATH: showu-frontend
+        uses: w9jds/firebase-action@v
