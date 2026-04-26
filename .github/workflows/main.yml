@@ -15,17 +15,20 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20" 
 
       - name: Install dependencies
+        working-directory: ./showu-frontend
         run: npm install
 
       - name: Build Next.js
-        run: npm run build && npm run export
+        working-directory: ./showu-frontend
+        run: CI=false npm run build
 
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@v2.2.0
         with:
-          args: deploy --only hosting
+          args: deploy --only hosting --project "8339b"
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_PATH: showu-frontend
